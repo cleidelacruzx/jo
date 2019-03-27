@@ -10,7 +10,8 @@
     <link href="/DataTables/Data/css/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="/nucleo/css/nucleo.css" rel="stylesheet">
-
+    <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         .pace {
           -webkit-pointer-events: none;
@@ -33,6 +34,10 @@
           right: 100%;
           width: 100%;
           height: 2px;
+        }
+
+        .nav-item{
+          float:center;
         }
 
         /*Loading Icon*/

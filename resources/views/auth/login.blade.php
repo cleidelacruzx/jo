@@ -19,6 +19,25 @@
   
 </head>
 
+<style>
+  .icon{
+  padding: 12px;
+  color: #00ace6;
+  min-width: 50px;
+  text-align: center;
+}
+
+.logo{
+  width: 445px;
+  height: 100px;
+  overflow: hidden;
+  position:absolute;
+  top: calc(-90px/2);
+  left:calc(8% - 37px);
+}
+
+</style>
+
 <body class="bg-default">
   <div class="main-content">
         <!-- Navbar -->
@@ -50,7 +69,7 @@
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="'/auth/splash'>
+              <a class="nav-link nav-link-icon">
                 <i class="ni ni-planet"></i>
                 <span class="nav-link-inner--text">Dashboard</span>
               </a>
@@ -85,7 +104,7 @@
 <!--             <div class="card-header bg-transparent pb-5"></div> -->
  
     <img src="img/headerpic.png" class="logo">
-            <div class="card-body px-lg-5 py-lg-5">
+            <div class="card-body px-lg-5 py-lg-5" style="border:5px solid #00ace6;">
               <div class="text-center text-muted mb-4">
               </div>
                     <form method="POST" action="{{ route('login') }}">
@@ -93,7 +112,7 @@
 
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <i class="fa fa-envelope icon"></i></i><label for="email">{{ __('E-Mail Address') }}</label>
+                                <br><i class="fa fa-envelope icon"></i></i><label for="email">{{ __('E-Mail Address') }}</label>
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                 @if ($errors->has('email'))
@@ -119,8 +138,8 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('login') }}
+                                <button type="submit" class="btn btn-primary" style="background-color: #00ace6;">
+                                    {{ __('Login') }}
                                 </button>
                             </div>
                         </div>

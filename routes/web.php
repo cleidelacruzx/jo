@@ -30,5 +30,6 @@ Route::resource('posts', 'PostController');
 Route::resource('client', 'ClientController');
 Route::resource('view', 'ViewController');
 Route::resource('admin', 'AdminController');
+Route::resource('cuser', 'CuserController');
 
 

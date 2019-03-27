@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 
@@ -60,15 +59,32 @@
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" >
-               
+              <a class="nav-link nav-link-icon">
                 <span class="nav-link-inner--text">Dashboard</span>
               </a>
             </li>
-            <li class="nav-item" id="login">
-              <a class="nav-link nav-link-icon" href="{{ route('login') }}" >
+            <li class="nav-item" id="login"> 
+              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
+              <div class=" dropdown-header noti-title">
+              <a class="nav-link nav-link-icon" >
                 <span class="nav-link-inner--text">Login</span>
+                </div>
+              @guest
+              @else
+              <div class="dropdown-divider"></div>
+              <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();" class="dropdown-item">
+                <i class="ni ni-user-run"></i>
+                <span>{{ __('Logout') }}</span>
               </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+              @endguest
+            </div>
+              </a>
+
             </li>
           </ul>
         </div>
@@ -94,70 +110,19 @@
     <!-- Page content -->
 <!DOCTYPE html>
 <html>
-<title>Ticketing System</title>
-<head>
-<meta charset="UTF-8">
 <style type="text/css">
 
 body { 
     background: white; 
     overflow-x:hidden;
-}
-
-.sidebar {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #00ace6;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.mcd-menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  /*height: 100px;*/
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-}
-    
-/*sidebar background*/
-.mcd-menu li a {
-  display: block;
-  text-decoration: none;
-  padding: 12px 20px;
-  color: white;
-  text-align: left;
-  height: 36px;
-  position: relative;
-  border-bottom: 1px solid #EEE;
-}
-
-.mcd-menu li a strong {
-    display: block;
-    text-transform: uppercase;
-}
-.mcd-menu li a small {
-    display: block;
-    font-size: 10px;
-}
-
-.mcd-menu li:hover > a {
-    color:black;
-}
+}   
 
 div.loginbox{
     position: absolute;
-    top: 110%;
+    top: 95%;
     left: 50%;
-    
     transform: translate(-50%,-50%);
-    width: 750px;
+    width: 80%;
     padding: 39px;
     background-color:white;
     box-shadow: 0 15px 25px rgba(0,0,0,.5)
@@ -166,39 +131,14 @@ div.loginbox{
 
 }
 .logo{
-    width: 750px;
-    height: 115px;
-    bordr-radius:50%;
+    width: 101.1%;
+    height: 130px;
     overflow: hidden;
     position:absolute;
-    top: calc(-130px/2);
-    left:calc(8% - 65px);
+    top: calc(-140px/2);
+    left:calc(5.5% - 65px);
 }
 
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
-
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-.col-25 {
-  float: center;
-  width: 40%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: center;
-  width: 75%;
-  margin-top: 6px;
-}
 
 /* Clear floats after the columns */
 .row:after {
@@ -207,19 +147,19 @@ label {
   clear: both;
 }
 .collapsible {
-  background-color: #777;
-  color: white;
+  background-color: #f2f2f2;
+  color: black;
   cursor: pointer;
   padding: 18px;
   width: 100%;
-  border: none;
+  border-bottom-color: white;
   text-align: left;
   outline: none;
   font-size: 15px;
 }
 
 .active, .collapsible:hover {
-  background-color: #555;
+  background-color: #cccccc;
 }
 
 .collapsible:after {
@@ -239,8 +179,51 @@ label {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
-  background-color: #f1f1f1;
+  background-color: #f2f2f2;
 }
+
+    /* Page content */
+
+.button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #00ace6;
+  border: none;
+  color: white;
+  text-align: center;
+  font-size: 15px;
+  padding: 20px;
+  width: 300px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 </style>
 <body>
 
@@ -270,88 +253,88 @@ label {
                                 <br>
                                 
                                 <div class="loginbox">
-
                                 <img src="img/headerpic.png" class="logo">
                                 <br>
-                                <h2 style="color:black">FAQs</h2>
-<button class="collapsible">E-Claims</button>
-<div class="content">
-<button class="collapsible">Open Section 1</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button class="collapsible">Open Section 2</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button class="collapsible">Open Section 3</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-</div>
 
-<button class="collapsible">PCB</button>
-<div class="content">
-<button class="collapsible">Open Section 1</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button class="collapsible">Open Section 2</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button class="collapsible">Open Section 3</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-</div>
+                                <h2 style="color:black">Frequently Asked Questions</h2>
+                                <button class="collapsible">E-Claims</button>
+                                <div class="content">
+                                <button class="collapsible">Open Section 1</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                <button class="collapsible">Open Section 2</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                <button class="collapsible">Open Section 3</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                </div>
 
-<button class="collapsible">Technical</button>
-<div class="content">
-<button class="collapsible">Open Section 1</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button class="collapsible">Open Section 2</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-<button class="collapsible">Open Section 3</button>
-<div class="content">
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div>
-</div>
-<button class="collapsible">Other Concern</button>
-<div class="content">
-  <form>
-<a type="button" href="{{route('register')}}">Click this to make a Concern</a>
-</form>
-</div>
+                                <button class="collapsible">PCB</button>
+                                <div class="content">
+                                <button class="collapsible">Open Section 1</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                <button class="collapsible">Open Section 2</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                <button class="collapsible">Open Section 3</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                </div>
 
-<script>
-var coll = document.getElementsByClassName("collapsible");
-var i;
+                                <button class="collapsible">Technical</button>
+                                <div class="content">
+                                <button class="collapsible">Open Section 1</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                <button class="collapsible">Open Section 2</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                <button class="collapsible">Open Section 3</button>
+                                <div class="content">
+                                  <p>content</p>
+                                </div>
+                                </div>
+                                <button class="collapsible">Other Concern</button>
+                                <div class="content">
+                                  <form><br>
+                                <a type="button" class="button" href="{{route('view.index')}}" style="vertical-align:middle"><span>Click this to make a Concern</span></a>
+                                </form>
+                                <br>
+                                </div>
 
-for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var content = this.nextElementSibling;
-    if (content.style.maxHeight){
-      content.style.maxHeight = null;
-    } else {
-      content.style.maxHeight = content.scrollHeight + "px";
-    } 
-  });
-}
-</script>
-</div>
-</center>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
+                                <script>
+                                var coll = document.getElementsByClassName("collapsible");
+                                var i;
 
+                                for (i = 0; i < coll.length; i++) {
+                                  coll[i].addEventListener("click", function() {
+                                    this.classList.toggle("active");
+                                    var content = this.nextElementSibling;
+                                    if (content.style.maxHeight){
+                                      content.style.maxHeight = null;
+                                    } else {
+                                      content.style.maxHeight = content.scrollHeight + "100px";
+                                    } 
+                                  });
+                                }
+                                </script>
+                          </div>
+                  </center>
+                  </div>
+                  </td>
+                  </tr>
+                  </tbody>
+       </table>
 </body>
 </html>                  
 

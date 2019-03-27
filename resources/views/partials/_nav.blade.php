@@ -63,32 +63,31 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            </a>
-          </li>
-        <ul class="navbar-nav">
-          <li class="nav-item">
             <a class="nav-link" href="{{ url('/admin') }}">
-              <i class="ni ni-tv-2 text-primary"></i> Admin
+              <i class="ni ni-tv-2 text-primary"></i> Concern Records
             </a>
           </li>
             <li class="nav-item">
             <a class="nav-link" href="{{ url('/client') }}">
-              <i class="ni ni-tv-2 text-primary"></i> Client
+              <i class="ni ni-tv-2 text-primary"></i> FAQ Records
             </a>
           </li>
         </ul>
-        <!-- Navigation -->
 
         <!-- Divider -->
         <hr class="my-3">
         <ul class="navbar-nav mb-md-3">
           <li class="nav-item">
             <a class="nav-link" href="{{ url('/users')}}" >
-              <i class="ni ni-single-02 text-yellow"></i> Admin Records
+              <i class="ni ni-single-02 text-yellow"></i> Admin Accounts
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url('/cuser')}}" >
+              <i class="ni ni-single-02 text-yellow"></i> Client Accounts
             </a>
           </li>
       </ul>
-
 
       </div>
     </div>
@@ -115,7 +114,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
               <div class=" dropdown-header noti-title">
-                <h6 class="text-overflow m-0">Welcome!</h6>
+                <h6 class="text-overflow m-0">Account</h6>
               </div>
               @guest
               @else

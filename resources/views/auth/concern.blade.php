@@ -99,12 +99,6 @@
 <meta charset="UTF-8">
 <style type="text/css">
 
-
-
-
-
-
-
 input[type=date] {
     display: inline-block;  
     width: 52%;

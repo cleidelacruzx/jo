@@ -16,10 +16,26 @@
   <link href="../assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
   <!-- Argon CSS -->
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
-  
-  
 </head>
 
+<style>
+  .icon{
+  padding: 12px;
+  background: white;
+  color: #00ace6;
+  min-width: 50px;
+  text-align: center;
+}
+
+.logo{
+  width: 635px;
+  height: 100px;
+  overflow: hidden;
+  position:absolute;
+  top: calc(-200px/2);
+  left:calc(8% - 50px);
+}
+</style>
 <body class="bg-default">
   <div class="main-content">
         <!-- Navbar -->
@@ -51,7 +67,7 @@
           <!-- Navbar items -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link nav-link-icon" href="'/auth/splash'>
+              <a class="nav-link nav-link-icon">
                 <i class="ni ni-planet"></i>
                 <span class="nav-link-inner--text">Dashboard</span>
               </a>
@@ -79,28 +95,51 @@
     </div>
 
     <!-- Page content -->
-    <div class="container mt--5 pb-5">
+    <div class="container mt--8 pb-5">
       <div class="row justify-content-center">
         <div class="col-lg-7 col-md-7">
           <div class="card bg-secondary shadow border-0">
             <!-- <div class="card-header bg-transparent pb-5"></div> -->
     <img src="img/headerpic.png" class="logo">
-            <div class="card-body px-lg-5 py-lg-5">
+            <div class="card-body px-lg-5 py-lg-5" style="border:5px solid #00ace6;">
               <div class="text-center text-muted mb-4-6">
               </div>
 
-
-            <div class="container">
+            <div class="content">
     <div class="row justify-content-center">
         <div class="col-md-15">
             <div class="card">
-                <div class="card-header">{{ __(' fill up this form to create account') }}</div>
+                <div class="card-header"><center>{{ __(' fill up this form to create account') }}</center></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group row">
-                            <i class="fa fa-envelope icon"></i><label for="email"  class="col-md-7 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <i class="fa fa-user icon"></i><label for="lname"  class="col-md-7 col-form-label text-md-left">{{ __('Last Name') }}</label>
+                            <div class="col-md-12">
+                                <input id="lname" type="lname" class="form-control{{ $errors->has('lname') ? ' is-invalid' : '' }}" name="lname" value="{{ old('lname') }}" required>
+
+                                @if ($errors->has('lname'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('lname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <i class="fa fa-user icon"></i><label for="fname"  class="col-md-7 col-form-label text-md-left">{{ __('First Name') }}</label>
+                            <div class="col-md-12">
+                                <input id="fname" type="fname" class="form-control{{ $errors->has('fname') ? ' is-invalid' : '' }}" name="fname" value="{{ old('fname') }}" required>
+
+                                @if ($errors->has('fname'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('fname') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <i class="fa fa-envelope icon"></i><label for="email"  class="col-md-7 col-form-label text-md-left">{{ __('E-Mail Address') }}</label>
                             <div class="col-md-12">
                                 <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
 
@@ -111,10 +150,20 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                                <i class="fas fa-user icon"></i><label for="username"  class="col-md-6 col-form-label text-md-left">{{ __('Username') }}</label>
+                            <div class="col-md-12">
+                                <input id="username" type="username" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required>
 
-                  
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                                  <div class="form-group row">
-                                <i class="fas fa-city icon"></i><label for="email"  class="col-md-6 col-form-label text-md-right">{{ __('Province') }}</label>
+                                <i class="fas fa-city icon"></i><label for="province"  class="col-md-6 col-form-label text-md-left">{{ __('Province') }}</label>
                             <div class="col-md-12">
                                 <input id="province" type="province" class="form-control{{ $errors->has('province') ? ' is-invalid' : '' }}" name="province" value="{{ old('province') }}" required>
 
@@ -127,7 +176,7 @@
                         </div>
 
                                   <div class="form-group row">
-                           <i class="fas fa-archway icon "></i><label for="email"  class="col-md-6 col-form-label text-md-right">{{ __('Municipality') }}</label>
+                           <i class="fas fa-archway icon "></i><label for="municipality"  class="col-md-6 col-form-label text-md-left">{{ __('Municipality') }}</label>
                             <div class="col-md-12">
                                 <input id="minucipality" type="municipality" class="form-control{{ $errors->has('municipality') ? ' is-invalid' : '' }}" name="municipality" value="{{ old('municipality') }}" required>
 
@@ -139,9 +188,8 @@
                             </div>
                         </div>
 
-
                                   <div class="form-group row">
-                                    <i class="fas fa-home icon"></i><label for="email"  class="col-md-6 col-form-label text-md-right">{{ __('Facility') }}</label>
+                                    <i class="fas fa-home icon"></i><label for="email"  class="col-md-6 col-form-label text-md-left">{{ __('Facility') }}</label>
                             <div class="col-md-12">
                                 <input id="facility" type="facility" class="form-control{{ $errors->has('facility') ? ' is-invalid' : '' }}" name="facility" value="{{ old('facility') }}" required>
 
@@ -153,7 +201,7 @@
                             </div>
                         </div>
                               <div class="form-group row">
-                                <i class="fa fa-key icon"></i><label for="password" class="col-md-6 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <i class="fa fa-key icon"></i><label for="password" class="col-md-6 col-form-label text-md-left">{{ __('Password') }}</label>
 
                             <div class="col-md-12">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -167,7 +215,7 @@
                         </div>
 
                         <div class="form-group row">
-                                <i class="fa fa-key icon"></i><label for="password-confirm" class="col-md-7 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                <i class="fa fa-key icon"></i><label for="password-confirm" class="col-md-7 col-form-label text-md-left">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-12">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
@@ -176,13 +224,14 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" style="background-color: #00ace6;">
                                     {{ __('Register') }}
                                 </button>
                             </div>
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </div>

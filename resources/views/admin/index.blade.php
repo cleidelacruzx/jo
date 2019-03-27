@@ -43,7 +43,7 @@
                   <textarea type="text" id="Status" class="form-control" id="Concern" name="Concern"></textarea>
                 </div>
           </div>
-		      <nav aria-label="Page navigation example">
+<nav aria-label="Page navigation example">
   <ul class="pagination justify-content-end">
     <li class="page-item disabled">
       <a class="page-link" href="#" tabindex="-1">
@@ -72,7 +72,7 @@
 		    <tr>
 		      <th>#</th>
 		      <th>Admin ID</th>
-		      <th>User Firstname</th>
+		      <th>User user</th>
 		      <th>User Middlename</th>
 		      <th>User Lastname</th>
 		      <th>Ticket</th>
@@ -92,15 +92,10 @@
 		     
 		      <td><a button type="button"  class="btn btn-danger" a href = "delete/{{ $admin->id }}">Delete</button></a></td>	
 		  	<td>
-
-		  		
         </form>
       </div>
 		  	</td>
 		    </tr>
-
-
-		 
 
 		    @endforeach
 		  </tbody>

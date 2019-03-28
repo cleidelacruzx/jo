@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Admin;
 
-class AdminController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +13,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-
-          $data1 = Admin::all();
-
-        return view('admin.index')->with([
-            'admin' => $data1 
-        ]);
-
-      
+        //
     }
 
     /**
@@ -42,20 +34,7 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-          $admin = new Admin ();
-
-      $admin->email = $request->input('email');
-      $admin->eproblem = $request->input('eproblem');
-      $admin->bproblem = $request->input('bproblem');
-      $admin->receiver = $request->input('receiver');
-      $admin->ticketnumber = random_int(1, 10000);
-
-      
-
-      $admin->save();
-       return view('view.index')->with([
-            'admin' => $admin 
-        ]);
+        //
     }
 
     /**
@@ -66,7 +45,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        return view('view.show',compact('admin'));
+        //
     }
 
     /**

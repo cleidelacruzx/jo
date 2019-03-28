@@ -73,7 +73,6 @@
             </a>
           </li>
         </ul>
-
         <!-- Divider -->
         <hr class="my-3">
         <ul class="navbar-nav mb-md-3">
@@ -83,7 +82,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/cuser')}}" >
+            <a class="nav-link" href="{{ route('report.index')}}" >
               <i class="ni ni-single-02 text-yellow"></i> Client Accounts
             </a>
           </li>

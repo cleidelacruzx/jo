@@ -16,7 +16,7 @@ class Admin extends Model
     protected $table='admin';
 
     protected $fillable = [
-        'User','First_name','Middle_name','Last_name','Ticket','Status'
+        'email','eproblem','bproblem','receiver','ticketnumber'
     ];
 
     /**

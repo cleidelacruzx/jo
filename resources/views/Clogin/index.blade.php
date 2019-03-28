@@ -67,13 +67,7 @@
             </div>
           </div>
           <!-- Navbar items -->
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link nav-link-icon">
-                <i class="ni ni-planet"></i>
-                <span class="nav-link-inner--text">Dashboard</span>
-              </a>
-            </li>
+     
             <li class="nav-item">
               <a class="nav-link nav-link-icon" href="{{ route('login') }}">
                 <i class="ni ni-key-25"></i>
@@ -143,6 +137,11 @@
                                 </button>
                             </div>
                         </div>
+                    </form>
+                    <center>
+                    <hr class="signin">
+                    <p>Create an account?  <a href="{{ route('register') }}">Register</a></p>
+                    </form>
                   </center>
             </div>
           </div>

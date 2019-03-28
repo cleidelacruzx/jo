@@ -63,26 +63,11 @@
                 <span class="nav-link-inner--text">Dashboard</span>
               </a>
             </li>
-            <li class="nav-item" id="login"> 
-              <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-right">
-              <div class=" dropdown-header noti-title">
-              <a class="nav-link nav-link-icon" >
+            <li class="nav-item" id="login">
+              <a class="nav-link nav-link-icon" href="{{ route('login') }}" >
                 <span class="nav-link-inner--text">Login</span>
-                </div>
-              @guest
-              @else
-              <div class="dropdown-divider"></div>
-              <a href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                document.getElementById('logout-form').submit();" class="dropdown-item">
-                <i class="ni ni-user-run"></i>
-                <span>{{ __('Logout') }}</span>
               </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
-              @endguest
-            </div>
+            </li>
               </a>
 
             </li>
@@ -131,12 +116,12 @@ div.loginbox{
 
 }
 .logo{
-    width: 101.1%;
+    width: 101%;
     height: 130px;
     overflow: hidden;
     position:absolute;
     top: calc(-140px/2);
-    left:calc(5.5% - 65px);
+    left:calc(5.5% - 72px);
 }
 
 
@@ -307,7 +292,7 @@ div.loginbox{
                                 <button class="collapsible">Other Concern</button>
                                 <div class="content">
                                   <form><br>
-                                <a type="button" class="button" href="{{route('view.index')}}" style="vertical-align:middle"><span>Click this to make a Concern</span></a>
+                                <a type="button" class="button" href="{{route('report.create')}}" style="vertical-align:middle"><span>Click this to make a Concern</span></a>
                                 </form>
                                 <br>
                                 </div>

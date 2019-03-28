@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/view', 'ViewController@index')->name('status');
 Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/report', 'ReportController@index')->name('report');
 
 
 Route::resource('users','UserController',['except' =>['destroy']]);
@@ -31,5 +32,5 @@ Route::resource('client', 'ClientController');
 Route::resource('view', 'ViewController');
 Route::resource('admin', 'AdminController');
 Route::resource('cuser', 'CuserController');
-
+Route::resource('report', 'ReportController');
 

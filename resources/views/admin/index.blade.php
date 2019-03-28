@@ -19,28 +19,24 @@
 		       <form id="addstudent">
                 {{ csrf_field() }}
                 <div class="row">
-                  <label>Admin</label>
-                  <input type="text" id="User" name="User" class="form-control" required>
+                  <label>Email</label>
+                  <input type="text" id="email" name="email" class="form-control" required>
                 </div>
                 <div class="row">
-                  <label>User firstname</label>
-                  <input type="text" id="Fist_name" name="" class="form-control" required>
+                  <label>Encountered Problem</label>
+                  <input type="text" id="eproblem" name="eproblem" class="form-control" required>
                 </div>
                  <div class="row">
-                  <label>User middlename</label>
-                  <input type="text" id="Middle_name" name="form-control" class="form-control" required>
+                  <label>Before Problem</label>
+                  <input type="text" id="bproblem" name="bproblem" class="form-control" required>
                 </div>
                   <div class="row">
-                  <label>User lastname</label>
-                  <textarea type="text" id="Last_name" class="form-control" id="categories" name="categories"></textarea>
+                  <label>Receiver</label>
+                  <textarea type="text" id="receiver" class="form-control" name="receiver"></textarea>
                 </div>
-                 <div class="row">
+                  <div class="row">
                   <label>Ticket</label>
-                  <textarea type="text" id="Ticket" class="form-control" id="Concern" name="Concern"></textarea>
-                </div>
-                  <div class="row">
-                  <label>Status</label>
-                  <textarea type="text" id="Status" class="form-control" id="Concern" name="Concern"></textarea>
+                  <textarea type="text" id="ticket" class="form-control" name="ticket"></textarea>
                 </div>
           </div>
 <nav aria-label="Page navigation example">
@@ -71,24 +67,23 @@
 		  <thead>
 		    <tr>
 		      <th>#</th>
-		      <th>Admin ID</th>
-		      <th>User user</th>
-		      <th>User Middlename</th>
-		      <th>User Lastname</th>
+		      <th>Email</th>
+		      <th>Encountered Problem</th>
+		      <th>Before Problem</th>
+		      <th>Receiver</th>
 		      <th>Ticket</th>
-		      <th>Status</th>
+		      <th>Action</th>
 		      </tr>
 		  </thead>
 		  <tbody>
 		  	@foreach ($admin as $admin)
 		    <tr>
 		      <td>{{ $admin->id }}</td>
-		      <td>{{ $admin->User }}</td>
-		      <td>{{ $admin->First_name }}</td>
-		      <td>{{ $admin->Middle_name }}</td>
-		      <td>{{ $admin->Last_name }}</td>
-		      <td>{{ $admin->Ticket }}</td>
-		      <td>{{ $admin->Status }}</td>
+		      <td>{{ $admin->email}}</td>
+		      <td>{{ $admin->eproblem}}</td>
+		      <td>{{ $admin->bproblem}}</td>
+		      <td>{{ $admin->receiver}}</td>
+		      <td>{{ $admin->ticketnumber}}</td>
 		     
 		      <td><a button type="button"  class="btn btn-danger" a href = "delete/{{ $admin->id }}">Delete</button></a></td>	
 		  	<td>

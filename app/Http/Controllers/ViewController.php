@@ -51,7 +51,8 @@ class ViewController extends Controller
      */
     public function show($id)
     {
-       
+       return view('view.show',compact('admin'));
+
     }
 
     /**

@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html>
 
 <head>
@@ -286,77 +287,77 @@ div.loginbox{
                                 <div class="loginbox">
                           <img src="img/headerpic.png" class="logo">
                           <br>
-                        <center><h2 style="color:black">REPORT</h2></center>
-                    <form action="{{route('admin.store') }}" method="POST"> 
-                    @csrf                    
-                    <i class="fa fa-calendar icon"></i><input type="date" id="theDate" name="theDate"><br>
-                      <script>
-                        var date = new Date();
-                        var day = date.getDate();
-                        var month = date.getMonth() + 1;
-                        var year = date.getFullYear();
+                        <center><h2 style="color:black">ADD NEW REPORT</h2></center>
 
-                        if (month < 10) month = "0" + month;
-                        if (day < 10) day = "0" + day;
-
-                        var today = year + "-" + month + "-" + day;
-
-
-                        document.getElementById('theDate').value = today;
-                      </script>
-                    <i class="fas fa-pen icon"></i><input type="text" id="eproblem" name="eproblem" placeholder="Enter Problem" required=""><br>
-                    <i class="fa fa-puzzle-piece icon"></i><input type="text" id="bproblem" name="bproblem" placeholder="Before the problem" required=""><br>
-                    <i class="fa fa-envelope icon"></i>
-                    <input type="text" id="email" name="email" placeholder="" required="" value="{{Session::get('email')}}"><br>
-
-                    <div class="col-20">
-                    <i class="fa fa-user icon"></i>
-                          <select class="receiver" id="receiver" name="receiver">
-                            <option selected disabled hidden>Choose a receiver</option>
-                            <option>Francis Joseph Gamboa</option>
-                          </select>
-                    </div>
-                    <br>
-
-                    <br>
-               <!--      <input name="accept" type="submit" onclick="saveData()" value="Submit" > -->
-                        <input name="accept" type="submit" value="Submit">
-                      @csrf
-                    </form>
-
-
-                      <script src="../assets/js/argon.min.js?v=1.0.0"></script>
-                      <script src="/toastr/toastr.min.js"></script>
-
-                    <script>
-                       function saveData(){
-                          var admin = $('#theDate').val();
-                          var admin = $('#eproblem') .val();
-                          var admin = $('#bproblem') .val();
-                          var admin = $('#receiver') .val();
-                          var admin = $('#email').val();  
-                          var admin = $('#ticket').val(); 
-
-                          $.ajax({
-                          type: "POST",
-                          url : " {{ route('admin.store') }}",
-                          data: $('#admin').serialize(),
-                          success:function(e){
-                          toastr.success('Post Created Successfully.', 'Success Alert', {timeOut: 5000});
-                          location.reload();
-}
-                    </script>
-                          </div>
-                  </center>
-                  </div>
-                  </td>
-                  </tr>
-                  </tbody>
-       </table>
-  </center>
-</body>
-</html>                  
-
-</body>
-
-</html>
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+   
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('report.index') }}"> Back</a>
+        </div>
+    </div>
+</div>
+   
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+   
+<form action="{{ route('report.store') }}" method="POST">
+    @csrf
+  
+         <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Email:</strong>
+                <input type="text" name="email" class="form-control" placeholder="Email">
+            </div>
+        </div>
+         <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Category:</strong>
+                <input type="text" name="category" class="form-control" placeholder="Category">
+            </div>
+        </div>
+         <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Sub Category:</strong>
+                <input type="text" name="sub_category" class="form-control" placeholder="Category">
+            </div>
+        </div>
+           <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Receiver:</strong>
+                <input type="text" name="receiver" class="form-control" placeholder="Name">
+            </div>
+        </div>
+           <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Level:</strong>
+                <input type="text" name="level" class="form-control" placeholder="Name">
+            </div>
+        </div>
+           <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Status:</strong>
+                <input type="text" name="status" class="form-control" placeholder="Name">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </div>
+   
+</form>
